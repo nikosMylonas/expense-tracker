@@ -2,32 +2,229 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+    /* Container class style
+     * ----------------------*/
+    .container-center {
+        @apply container mx-auto px-4;
+    }
+
+    /* Header nad Nav styles
+     * ------------------------*/
+    header {
+        @apply bg-black;
+    }
+    .navbar {
+        @apply container-center px-2 py-8 text-white;
+    }
+    .navbar-container {
+        @apply flex flex-col md:flex-row md:justify-between;
+    }
+    .navbar .logo {
+        @apply text-3xl text-center mb-4 md:text-left md:mb-0;
+    }
+    .clerk-menu {
+        @apply text-center md:text-left;
+    }
+    .navbar .btn,
+    .guest .btn {
+        @apply px-4 py-2 rounded-lg text-white;
+    }
+
+    .navbar .btn-signin,
+    .guest .btn-signin {
+        @apply bg-royalBlue hover:bg-dodgerBlue;
+    }
+    /* .navbar .btn-user {
+        @apply bg-chocolate hover:bg-sandyBrown;
+    } */
+
+    /* Main styles
+     * ---------------*/
+    main {
+        @apply py-12;
+    }
+    .h1-center {
+        @apply text-4xl text-center mb-4;
+    }
+    .h2-center {
+        @apply text-3xl text-center mb-4;
+    }
+    h3 {
+        @apply text-2xl mb-4;
+    }
+    .h3-form {
+        @apply text-center md:text-left;
+    }
+    section {
+        @apply mt-6;
+    }
+    .guest {
+        @apply text-center p-8 mb-8 rounded-lg border bg-gray-200 border-gray-800;
+    }
+    .guest .btn {
+        @apply mt-8;
+    }
+
+    /* Balance style 
+     * -------------------*/
+    #balance {
+        @apply mb-4;
+    }
+    #balance .danger {
+        @apply text-red-600;
+    }
+    #balance .success {
+        @apply text-green-800;
+    }
+    #balance h3 {
+        @apply text-2xl mb-0;
+    }
+    #balance .balance {
+        @apply text-4xl;
+    }
+
+    /* Income/Expense style
+     * ----------------------*/
+    #inc-exp .inc-exp-container {
+        @apply px-8 py-4 mb-6 border border-slate-500 rounded-lg w-full md:w-96 flex justify-between md:justify-around gap-4;
+    }
+    #inc-exp .inc-exp-container div {
+        @apply md:bg-slate-200 md:rounded-lg md:px-6 md:py-4;
+    }
+    #inc-exp h4 {
+        @apply uppercase text-sm;
+    }
+    #inc-exp .money {
+        @apply text-2xl;
+    }
+    #inc-exp .plus {
+        @apply text-green-800;
+    }
+    #inc-exp .minus {
+        @apply text-red-600;
+    }
+    /* #inc-exp .inc-exp-container div:last-of-type {
+        @apply md:border-l md:border-slate-500 md:pl-8;
+    } */
+
+    /* Transaction List style
+     * -------------------------*/
+    #transaction-list h3 {
+        @apply text-2xl mb-2;
+    }
+    #transaction-list li {
+        @apply p-4 mb-2 border border-slate-400  w-full lg:w-6/12;
+    }
+    #transaction-list .transaction-container {
+        @apply grid grid-cols-4 md:grid-cols-9;
+    }
+    #transaction-list li .date {
+        @apply md:col-span-1;
+    }
+    #transaction-list li .description {
+        @apply col-span-2 md:col-span-5 text-center;
+    }
+    #transaction-list li .amount {
+        @apply justify-self-end md:col-span-2;
+    }
+    #transaction-list .transaction-container .delete {
+        @apply hidden md:inline-grid mt-1 text-red-600 hover:text-red-400 md:col-span-1;
+    }
+    #transaction-list li .delete-mobile {
+        @apply flex justify-center align-middle md:hidden mt-2 text-red-600 hover:text-red-400;
+    }
+    #transaction-list .montly-total {
+        @apply p-4 mb-2 border border-slate-400 bg-emerald-50  w-full lg:w-6/12 text-xl text-right;
+    }
+    #transaction-list .plus {
+        @apply border-r-4 border-r-green-800;
+    }
+    #transaction-list .minus {
+        @apply border-r-4 border-r-red-600;
+    }
+
+    /* Error style
+     * ----------------*/
+    .error {
+        @apply p-4 bg-red-300 rounded-lg;
+    }
+    .error span {
+        @apply font-semibold;
+    }
+    /* General form style
+     * --------------------*/
+    form {
+        @apply mb-8;
+    }
+    .form-control {
+        @apply my-4 flex flex-col justify-start;
+    }
+    .transaction-form .radio-item {
+        @apply max-w-48 flex justify-start gap-x-2;
+    }
+    .form-control label {
+        @apply mr-4 mb-2;
+    }
+    .transaction-form .radio-item label {
+        @apply mr-0 mb-1;
+    }
+    #expenses,
+    #income {
+        accent-color: #2f4f4f;
+    }
+    input {
+        @apply p-4 border border-slate-500 rounded-lg focus:outline-none focus:border-2 focus:border-darkSlateGray;
+    }
+    .transaction-form .btn-container {
+        @apply text-center;
+    }
+    .transaction-form .btn {
+        @apply p-4 bg-darkSlateGray rounded-lg text-white hover:bg-slateGray;
+    }
+
+    /* Separator style
+     * -------------------*/
+    .separator {
+        @apply border-2 border-darkSlateGray w-full mx-auto;
+    }
+
+    /* Footer style
+     * ---------------*/
+    footer {
+        @apply bg-darkSlateGray; /*bg-dimGray;*/
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Modal style
+ *-----------------*/
+.modal {
+    @apply max-w-xs md:max-w-md lg:max-w-6xl p-7 rounded-lg;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.modal-content {
+    @apply mx-4 mt-4 mb-2;
+}
+.modal-btn-container {
+    @apply flex justify-between;
+}
+.modal-btn-container .btn {
+    @apply mt-6 px-6 py-2 md:ml-4 rounded-md text-white;
+}
+.modal-btn-container .btn-primary {
+    @apply bg-red-600 border hover:border-red-600 hover:bg-red-300 hover:text-stone-900 hover:duration-300;
+}
+.modal-btn-container .btn-secondary {
+    @apply bg-gray-800 border hover:border-gray-800 hover:bg-gray-200 hover:text-stone-900 hover:duration-300;
+}
+.modal-close-btn {
+    @apply p-4 outline-none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.modal-btn-container button {
+    @apply cursor-pointer;
+}
+
+.modal::backdrop {
+    background: rgba(0, 0, 0, 0.4);
 }
