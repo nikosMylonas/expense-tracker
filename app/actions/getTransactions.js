@@ -23,7 +23,7 @@ async function getTransactions() {
         });
 
         const amounts = transactions.map((transaction) => transaction.amount);
-        const montlyTotal = amounts.reduce((total, amount) => total + amount, 0);
+        const monthlyTotal = amounts.reduce((total, amount) => total + amount, 0);
 
         return { transactions, monthlyTotal }
     } catch (error) {
